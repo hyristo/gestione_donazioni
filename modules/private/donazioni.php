@@ -270,8 +270,51 @@ $pro_donazione = CodiciVari::Load(0, 'PRO_DONAZIONE');
                         cache: true
                     }
                 });
+                const mesi = [];
+                mesi['Gennaio'] = 1;
+                mesi['Febbraio'] = 2;
+                mesi['Marzo'] = 3;
+                mesi['Aprile'] = 4;
+                mesi['Maggio'] = 5;
+                mesi['Giugno'] = 6;
+                mesi['Luglio'] = 7;
+                mesi['Agosto'] = 8;
+                mesi['Settembre'] = 9;
+                mesi['Ottobre'] = 10;
+                mesi['Novembre'] = 11;
+                mesi['Dicembre'] = 12;    
+                $('#ListDonazioni').DataTable({
+                    initComplete: function () {
+                        this.api().columns([1]).every(function () {
+                            var column = this;
+                                                    
+                            var select = $('<select class="selectForPages"><option value="">Tutti i mesi</option></select>')
+                                    .appendTo($(column.header()))
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                                $(this).val()
+                                                );
 
-                $('#ListDonazioni').DataTable({                    
+                                        column
+                                                .search(val ? val : '', true, false)
+                                                .draw();
+                                    });
+
+                            column.cells('', column[0]).render('display').sort().unique().each(function (d, j) {
+                                if (column.search() === d) {
+                                    select.append('<option value="' +  mesi[d] + '" selected="selected">' + d + '</option>');
+                                } else {
+                                    select.append('<option value="' +  mesi[d] + '">' + d + '</option>');
+                                }
+                            });
+
+                            $(select).click(function (e) {
+                                e.stopPropagation();
+                            });
+
+                        });                           
+                    },
+                     dom: 'lrtip', //lBfrtip
                     'processing': true,
                     'serverSide': true,
                     'serverMethod': 'post',

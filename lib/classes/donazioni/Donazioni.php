@@ -36,6 +36,20 @@ class Donazioni extends DataClass{
         }
     }
 
+    public function MaxData(){
+        global $con;
+        $sql = "SELECT max(DATA_MODIFICA) as AGGIORNAMENTO FROM " . self::TABLE_NAME;
+        $query = $con->prepare($sql);
+        try {
+            $query->execute();
+            $it = $query->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $exc) {
+            $it['esito'] = -999;
+            $it['descrizioneErrore'] = $exc->getMessage();
+        }
+        return $it;
+    }
+
     public function Count() {
         
         $where = 'ID_CARD = '. $this->ID_CARD .' AND ANNO = '.$this->ANNO.' AND MESE = '.$this->MESE . ' AND TIPO_DONAZIONE = '.$this->TIPO_DONAZIONE.' AND PRO_DONAZIONE = '.$this->PRO_DONAZIONE;
@@ -48,7 +62,7 @@ class Donazioni extends DataClass{
     public function Load($codice = '',$anno = '', $mese = '', $tipo_donazione = 0, $pro_donazione = 0, $cancellato = 0) {
         global $con;
         $where = "";
-        $order = " ORDER BY ANNO, MESE, ID_CARD";
+        $order = " ORDER BY ANNO, MESE, PRO_DONAZIONE";
         
         if (intval($cancellato) >= 0)
             $where .= ($where == "" ? "" : " AND ") . "CANCELLATO = :CANCELLATO";

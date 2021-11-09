@@ -25,7 +25,7 @@ $GLOBALS["MODULI_NO_LOGS"] = array("Notifica", "AppToken");
  *  moduli e servizi richiamabili senza essere loggati array('module' => array('action')) [il controllo è fatto nella pagina "_webservice.php"]
  */
 //$pageAccessNoControll = array('info.php', 'faq.php', 'login.pho', 'loginspid.php', 'login_spid.php', '_webservice.php','privacy.php');
-$pageAccessNoControll = array('login.php', 'loginspid.php', 'login_spid.php', '_webservice.php','privacy.php');
+$pageAccessNoControll = array('login.php', 'loginspid.php', 'login_spid.php', '_webservice.php','privacy.php', 'listmemorycard.php');
 $moduliActionAccessNoControll = array(
     'faq' => array('load', 'listFaq'), //'saveFaq', 
     'account' => array('login', 'save', 'searchComune')

@@ -77,13 +77,13 @@ function listDonazioni(){
        $searchQuery .= $where." )";
     }
     
-    //echo $searchQuery;
     
     ## Search     
     if($searchValue != ''){
        $searchQuery .= " AND ( lower( CARD ) LIKE :CARD) ";
        $searchArray['CARD'] = "%$searchValue%";
     }
+    //$searchQuery .= " ORDER BY  ANNO, MESE, PRO_DONAZIONE";
     //echo $searchQuery;exit();
     $res = Donazioni::LoadDataTable($searchQuery, $searchArray, $columnName,$columnSortOrder, $row, $rowperpage);
     //Utils::print_array($res);

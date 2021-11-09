@@ -13,19 +13,7 @@ include 'lib/api.php';
         //include_once ROOT . 'layout/menu.php'; 
         ?>
         <main role="main" >            
-            <header class="masthead masthead-page">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-9 text-right">
-                            <h2>QUADERNO DI CAMPAGNA</h2>
-                            <h3>Il software online per l'agricoltura sostenibile</h3>
-                            <small>ti aiuta a gestire la tua azienda agricola, <br/>rendendola efficiente e conforme alla normativa vigente</small>
-                        </div>
-                        <div class="col-3">
-                            <i style="font-size: 155px" class="fas fa-tractor"></i>
-                        </div>                    
-                    </div>
-                </div>
+            <header class="masthead masthead-page">                
                 <?
                 include_once ROOT . 'layout/header_svg.php';
                 ?>
