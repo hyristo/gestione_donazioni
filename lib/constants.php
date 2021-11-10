@@ -83,14 +83,8 @@ $TIPOLOGIA_PRODOTTO = array(
   ########################
  */
 $GRUPPI_CODICIVARI = array(
-    "TIPO_INTERVENTO" => "Tipo intervento",
-    "STADIO_FENOLOGICO" => "Stadio fenologico",
-    "TIPO_AVVERSITA" => "Tipo avversità",
-    "UNITA_MISURA" => "Unita di misura",
-    "OPERAZIONE" => "Operazione",
-    "CAUSALI_MOVIMENTO" => "Causali movimento",
-    "STATO_REFERTO_CAMPIONI" => "Stato referto",
-    "TIPO_PRELIEVO_ACQUA" => "Tipo prelievo",
+    "TIPO_PERSONA" => "Tipo persona",
+    "SESSO" => "Sesso",
     "TIPO_DONAZIONE" => "Tipo donazione",
     "PRO_DONAZIONE" => "Pro donazione"
 );

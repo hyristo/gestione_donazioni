@@ -549,13 +549,10 @@ siparsFrameworkClass = function () {
                                 var datatbale_name = $(dataTable).DataTable();
                                 datatbale_name.ajax.reload(null, false);
                             }
-                            console.log(JSON.parse(data));
+                            //console.log(JSON.parse(data));
                             $.each(JSON.parse(data), function (i, item) {
                                 $('#edit_' + i).val(item);
-                                console.log('#edit_' + i + ' --> '+item);
-                                /*if ($('#edit_' + i).is('select')) {
-                                 $('#edit_' + i).formSelect();
-                                 }*/
+                                //console.log('#edit_' + i + ' --> '+item);                                
                             });
                             if (module == 'faq_utenti' && action == 'load') {
                                 if ($('#edit_STATO').val() > 0) {
@@ -564,6 +561,18 @@ siparsFrameworkClass = function () {
                                 } else {
                                     $(".btn-presavisione").html("Presa visione");
                                     //$(".btn-presavisione").prop("hidden", false);
+                                }
+                            }else if(module == 'persone' && action == 'load'){                                
+                                if ($('#edit_ISTAT_NASCITA').val() > 0) {
+                                    $("#edit_COMUNE_NASCITA").select2("trigger", "select", {
+                                        data: {
+                                            id: $('#edit_ISTAT_NASCITA').val(),
+                                            text: $('#edit_TXT_COMUNE_NASCITA').val(),
+                                            cap: '',
+                                            codice_provincia: '',
+                                            codice_istat: $('#edit_ISTAT_NASCITA').val()
+                                        }
+                                    })
                                 }
                             }
                         });

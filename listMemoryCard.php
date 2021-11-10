@@ -66,28 +66,32 @@ include 'lib/api.php';
                                     
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-1 p-0">MESI<i class="far fa-arrow-alt-circle-right"></i></br>CARD<i class="far fa-arrow-alt-circle-down"></i></div>
-                                <div class="col-11">                
-                                    <div class="row alert-primary">
-                                        <?foreach ($MESI as $key => $value) {?>
-                                            <div class="col-md-1 p-0 text-center"><small><?=$value?></small></div>
-                                        <?}?>                            
-                                    </div>
-                                </div>
-                            </div>
-                            <? foreach ($listCard as $card) {?>
-                            <div class="row">
-                                <div class="col-1 p-1 alert-primary"><i class="far fa-credit-card"></i>&nbsp;<?=$card['CODICE']?></div>
-                                <div class="col-11">
-                                    <div class="row" style="border-top: 1px solid #ededed;">
+                            <table class="table table-sm table-hover ">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">#</th>
                                     <?foreach ($MESI as $key => $value) {?>
-                                            <div id="cella-<?=$anno?>-<?=$key?>-<?=$card['ID']?>" class="col-md-1 p-0 text-center"></div>
+                                        <th class="text-center" scope="col"><small><?=$value?></small></th>
                                     <?}?>
-                                    </div>  
-                                </div>
-                            </div>
-                            <?}?>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <? foreach ($listCard as $card) {?>
+                                <tr>
+                                    <th scope="row"><i class="far fa-credit-card"></i>&nbsp;<?=$card['CODICE']?></th>
+                                    
+                                    
+                                        <?foreach ($MESI as $key => $value) {?>
+                                            
+                                                <td id="cella-<?=$anno?>-<?=$key?>-<?=$card['ID']?>" class="text-center"></td>
+                                        <?}?>
+                                        
+                                </tr>
+                                <?}?>
+                                </tbody>
+                            </table>
+
+                            
                         </div>
                     </div>
                     

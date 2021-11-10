@@ -14,7 +14,7 @@ require_once "IDataClass.php";
  */
 class Comune extends DataClass {
 
-    const TABLE_NAME = "COMUNE";
+    const TABLE_NAME = "COMUNI";
 
     public $ID = 0;
     public $CODICE_REGIONE = null;
@@ -26,6 +26,7 @@ class Comune extends DataClass {
     public $DESCRIZIONE = null;
     public $ATTIVO = null;
     public $CAP = null;
+    public $REGIONE = null;
 
     public function __construct($src = null) {
         global $con;
@@ -106,7 +107,7 @@ class Comune extends DataClass {
                 $filter = " REGIONE = :regione AND ";
             }
             $string = "%" . strtolower($string) . "%";
-            $sql = "SELECT DESCRIZIONE  , CODICE_ISTAT, CODICE_PROVINCIA,CAP FROM " . self::TABLE_NAME . " WHERE  " . $filter . " LOWER(DESCRIZIONE) LIKE :term ORDER BY DESCRIZIONE";
+            $sql = "SELECT DESCRIZIONE  , CODICE_ISTAT, CODICE_PROVINCIA,CAP FROM " . self::TABLE_NAME . " WHERE  " . $filter . " LOWER(DESCRIZIONE) LIKE :TERM ORDER BY DESCRIZIONE";
             $query = $con->prepare($sql,true);
             if (!empty($regione)){  
                 $query->bindParam(":REGIONE", $regione);
@@ -115,7 +116,7 @@ class Comune extends DataClass {
             try {
                 $query->execute();
                 while ($it = $query->fetch(PDO::FETCH_ASSOC)) {
-                    $row['id'] = $it['DESCRIZIONE'];
+                    $row['id'] = $it['CODICE_ISTAT'];
                     $row['text'] = $it['DESCRIZIONE'];
                     $row['label'] = $it['DESCRIZIONE'];
                     $row['codice_istat'] = $it['CODICE_ISTAT'];

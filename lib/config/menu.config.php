@@ -76,6 +76,15 @@ $MENUITEMS[] = array(
             "handler" => "",
             "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
             "group_id" => array(GRUPPO_AMMINISTRATORE,GRUPPO_CARD)
+        ),array(
+            "id" => "PERSONE",
+            "text" => "Gestione persone",
+            "description" => "Gestione anagrafica delle persone",
+            "icon" => "fas fa-code",
+            "url" => HTTP_PRIVATE_SECTION . "persone.php",
+            "handler" => "",
+            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
+            "group_id" => array(GRUPPO_AMMINISTRATORE,ANAG_PERSONE)
         )/*,
         array(
             "id" => "FITOSANITARI",
