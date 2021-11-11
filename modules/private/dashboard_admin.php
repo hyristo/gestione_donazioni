@@ -2,7 +2,7 @@
 <?
 include '../../lib/api.php';
 
-define("THIS_PERMISSION", array('CODICI_VARI', 'FERTILIZZANTI', 'FITOSANITARI'));
+define("THIS_PERMISSION", array('CODICI_VARI', 'ANAG_PERSONA'));
 
 
 //Utils::print_array($LoggedAccount);exit();

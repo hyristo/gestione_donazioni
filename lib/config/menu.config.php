@@ -27,18 +27,39 @@ $MENUITEMS[] = array(
     "url" => HTTP_PRIVATE_SECTION . "faq.php",
     "handler" => "javascript:checkViewConsent('" . HTTP_PRIVATE_SECTION . "faq.php" . "')"
 );*/
-/*
+
 $MENUITEMS[] = array(
-    "id" => "DASHBOARDAZIENDA",
-    "text" => "QdC",
-    "description" => "Vai al quaderno di campagna dell'azienda scelta",
-    "icon" => "fas fa-tractor",
+    "id" => "GESTDONAZIONI",
+    "text" => "Donazioni",
+    "description" => "Gestione delle donazioni",
+    "icon" => "fas fa-people-carry",
     "url" => HTTP_PRIVATE_SECTION . "dashboard.php",    
     "handler" => "",
     "super_user" => SUPER_USER,
-    "group_id" => array(GRUPPO_AMMINISTRATORE),
+    "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_CARD),
+    "children" => array(
+        array(
+            "id" => "CARD",
+            "text" => "Mamory Card",
+            "description" => "Anagrafica memory card",
+            "icon" => "far fa-credit-card",
+            "url" => HTTP_PRIVATE_SECTION . "memory_card.php",
+            "handler" => "",
+            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
+            "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_CARD)
+        ),array(
+            "id" => "DONAZIONI",
+            "text" => "Gestione donazioni",
+            "description" => "Gestione delle donazioni con le card",
+            "icon" => "fas fa-hand-holding-usd",
+            "url" => HTTP_PRIVATE_SECTION . "donazioni.php",
+            "handler" => "",
+            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
+            "group_id" => array(GRUPPO_AMMINISTRATORE,GRUPPO_CARD)
+        )
+    )
 );
-*/
+
 $MENUITEMS[] = array(
     "id" => "ANAGRAFICHE",
     "text" => "Anagrafiche",
@@ -59,53 +80,15 @@ $MENUITEMS[] = array(
             "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
             "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_CARD)
         ),array(
-            "id" => "CARD",
-            "text" => "Mamory Card",
-            "description" => "Anagrafica memory card",
-            "icon" => "fas fa-code",
-            "url" => HTTP_PRIVATE_SECTION . "memory_card.php",
-            "handler" => "",
-            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
-            "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_CARD)
-        ),array(
-            "id" => "DONAZIONI",
-            "text" => "Gestione donazioni",
-            "description" => "Gestione delle donazioni con le card",
-            "icon" => "fas fa-code",
-            "url" => HTTP_PRIVATE_SECTION . "donazioni.php",
-            "handler" => "",
-            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
-            "group_id" => array(GRUPPO_AMMINISTRATORE,GRUPPO_CARD)
-        ),array(
             "id" => "PERSONE",
             "text" => "Gestione persone",
             "description" => "Gestione anagrafica delle persone",
-            "icon" => "fas fa-code",
+            "icon" => "fas fa-id-card-alt",
             "url" => HTTP_PRIVATE_SECTION . "persone.php",
             "handler" => "",
             "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
             "group_id" => array(GRUPPO_AMMINISTRATORE,ANAG_PERSONE)
-        )/*,
-        array(
-            "id" => "FITOSANITARI",
-            "text" => "Prodotti fitosanitari",
-            "description" => "Anagarfica prodotti fitosanitari",
-            "icon" => "fas fa-laptop-code",
-            "url" => HTTP_PRIVATE_SECTION . "prodotti_fitosanitari.php",
-            "handler" => "",
-            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
-            "group_id" => array(GRUPPO_AMMINISTRATORE)
-        ),
-        array(
-            "id" => "FERTILIZZANTI",
-            "text" => "Prodotti fertilizzanti",
-            "description" => "Anagarfica prodotti fertilizzanti",
-            "icon" => "fas fa-laptop-code",
-            "url" => HTTP_PRIVATE_SECTION . "prodotti_fertilizzanti.php",
-            "handler" => "",
-            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
-            "group_id" => array(GRUPPO_AMMINISTRATORE)
-        )*/
+        )
     )
 );
 
@@ -117,8 +100,19 @@ $MENUITEMS[] = array(
     "url" => "#",
     "handler" => "",
     "super_user" => SUPER_USER,
-    "group_id" => array(GRUPPO_OPERATORI),
+    "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_OPERATORI),
     "children" => array(
+        array(
+            "id" => "STATISTICHE",
+            "text" => "Statistiche",
+            "description" => "Visualizzazione delle statistiche delle donazioni",
+            "icon" => "fas fa-users",
+            "url" => HTTP_PRIVATE_SECTION . "analisys.php",
+            "handler" => "",
+            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
+            "fase" => 0,
+            "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_OPERATORI)
+        ),
         array(
             "id" => "OPERATORI",
             "text" => "Operatori",
@@ -128,7 +122,7 @@ $MENUITEMS[] = array(
             "handler" => "",
             "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
             "fase" => 0,
-            "group_id" => array(GRUPPO_OPERATORI)
+            "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_OPERATORI)
         ),
         array(
             "id" => "LOGSFE",
@@ -139,7 +133,7 @@ $MENUITEMS[] = array(
             "handler" => "",
             "super_user" => SUPER_USER,
             "fase" => 0,
-            "group_id" => array(GRUPPO_LOGS)
+            "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_LOGS)
         )
     )
 );

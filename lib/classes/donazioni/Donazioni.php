@@ -151,6 +151,56 @@ class Donazioni extends DataClass{
         return parent::_LogicalDelete(self::TABLE_NAME, '"ID" = ' . $this->ID);
     }
     /**
+     * Restituisce le statistiche totalei
+     */
+    public function GetStaticsPro($anno=""){
+        global $con;
+        $sql="SELECT C.DESCRIZIONE, SUM(D.IMPORTO) AS TOTALE FROM ".self::TABLE_NAME." D
+        left join ".CodiciVari::TABLE_NAME." C on C.ID_CODICE = D.PRO_DONAZIONE AND GRUPPO = 'PRO_DONAZIONE'
+        where D.CANCELLATO = 0 ";
+        if(!empty($anno)){
+            $sql.=" AND D.ANNO = :ANNO";    
+        }
+        $sql.=" group by C.DESCRIZIONE";
+        $query = $con->prepare($sql);
+        if(!empty($anno)){
+            $query->bindValue(":ANNO", $anno);
+        }
+        try {
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $exc) {
+            $result['esito'] = -999;
+            $result['descrizioneErrore'] = $exc->getMessage();
+        }
+        return $result;
+    }
+
+    public function GetStaticsProMese($anno=""){
+        global $con;
+        $sql="SELECT D.ANNO, D.MESE, C.DESCRIZIONE, SUM(D.IMPORTO) AS TOTALE FROM ".self::TABLE_NAME." D
+        left join ".CodiciVari::TABLE_NAME." C on C.ID_CODICE = D.PRO_DONAZIONE AND GRUPPO = 'PRO_DONAZIONE'
+        where D.CANCELLATO = 0 ";
+        if(!empty($anno)){
+            $sql.=" AND D.ANNO = :ANNO";    
+        }
+        $sql.=" group by C.DESCRIZIONE, D.ANNO, D.MESE";
+        $query = $con->prepare($sql);
+        if(!empty($anno)){
+            $query->bindValue(":ANNO", $anno);
+        }
+        try {
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $exc) {
+            $result['esito'] = -999;
+            $result['descrizioneErrore'] = $exc->getMessage();
+        }
+        return $result;
+    }
+
+
+    /**
      * Funzione per la visualizzazione dei logs
      * @param type $record
      * @param type $campo

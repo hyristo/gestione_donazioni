@@ -740,6 +740,26 @@ class Utils {
         }
         return $color;
     }
+    /**
+     * Restituisce il rgb e hex
+     */
+    public function randomColor(){
+        $result = array('rgb' => '', 'hex' => '');
+        $rgb = array('r', 'b', 'g');
+        $result['rgb']= array();
+        $r = '';
+        foreach($rgb as $col){
+            $rand = mt_rand(0, 255);
+            $r.=$rand.",";
+            $dechex = dechex($rand);
+            if(strlen($dechex) < 2){
+                $dechex = '0' . $dechex;
+            }
+            $result['hex'] .= $dechex;
+        }
+        $result['rgb'] = $r.' 1';
+        return $result;
+    }
 
     /*
      * Controllo la luminosita del colore
