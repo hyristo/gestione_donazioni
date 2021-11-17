@@ -55,6 +55,10 @@ if ($config['CARD']) {
     require_once ROOT . "lib/import/card.php";    
 }
 
+if ($config['BIBLIOTECA']) {
+    require_once ROOT . "lib/import/biblioteca.php";    
+}
+
 
 
 /* START APP */

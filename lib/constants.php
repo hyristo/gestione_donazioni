@@ -86,7 +86,10 @@ $GRUPPI_CODICIVARI = array(
     "TIPO_PERSONA" => "Tipo persona",
     "SESSO" => "Sesso",
     "TIPO_DONAZIONE" => "Tipo donazione",
-    "PRO_DONAZIONE" => "Pro donazione"
+    "PRO_DONAZIONE" => "Pro donazione",
+    "CATEGORIA_LIBRO" => "Categoria",
+    "GENERE_LIBRO" => "Genere del testo",
+    "TIPO_CONTENUTO" => "Contenuto"
 );
 
 

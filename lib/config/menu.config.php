@@ -6,6 +6,7 @@ define('GRUPPO_AZIENDE', 34);
 define('GRUPPO_CAA', 35);
 define('GRUPPO_AMMINISTRATORE', 1);
 define('GRUPPO_CARD', 2);
+define('GRUPPO_BIBLIOTECA', 3);
 define("ROLE_CODE_FAKE", ''); // IMPOSTARE IL GRUPPO SOLO PER BYPASSARE IL ROLE_CODE DELLO IAM
 
 
@@ -18,6 +19,16 @@ $MENUITEMS[] = array(
     "handler" => "",
     "super_user" => 0,
     "group_id" => array()
+);
+$MENUITEMS[] = array(
+    "id" => "BIBLIOTECA",
+    "text" => "Biblioteca",
+    "description" => "Gestione della biblioteca",
+    "icon" => "fas fa-book",
+    "url" => HTTP_PRIVATE_SECTION . "biblioteca.php",    
+    "handler" => "",
+    "super_user" => SUPER_USER,
+    "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_BIBLIOTECA),
 );
 /*$MENUITEMS[] = array(
     "id" => "FAQ",

@@ -18,7 +18,8 @@ $config = array(
     "MAGAZZINO" => false,
     "GESTIONALE" => true,
     "QDC" => false,
-    "CARD" => true
+    "CARD" => true,
+    "BIBLIOTECA" => true
 );
 
 if ($config['DEBUG_MESSAGE']) {
