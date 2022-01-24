@@ -738,12 +738,8 @@ class UID_FIREBASE_ADMIN extends DataClass {
 
     public function SwitchRoleCode() {
         $result = "";
-        if ($this->ID >0){
-            if($this->IsAmministratore()) {
-                Utils::RedirectTo(HTTP_PRIVATE_SECTION . 'dashboard_admin.php');
-            }else{
-                Utils::RedirectTo(HTTP_PRIVATE_SECTION . 'dashboard.php');
-            }
+        if ($this->ID >0){            
+                Utils::RedirectTo(HTTP_PRIVATE_SECTION . 'dashboard_admin.php');            
         }else{            
             Utils::RedirectTo(BASE_HTTP . 'logout.php');
         }

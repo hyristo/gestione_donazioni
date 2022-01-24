@@ -46,7 +46,7 @@ $MENUITEMS[] = array(
     "icon" => "fas fa-people-carry",
     "url" => HTTP_PRIVATE_SECTION . "dashboard.php",    
     "handler" => "",
-    "super_user" => SUPER_USER,
+    "super_user" => 0,
     "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_CARD),
     "children" => array(
         array(
@@ -56,7 +56,7 @@ $MENUITEMS[] = array(
             "icon" => "far fa-credit-card",
             "url" => HTTP_PRIVATE_SECTION . "memory_card.php",
             "handler" => "",
-            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
+            "super_user" => 0, // visibile solo all'utente SUPER USER
             "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_CARD)
         ),array(
             "id" => "DONAZIONI",
@@ -65,7 +65,7 @@ $MENUITEMS[] = array(
             "icon" => "fas fa-hand-holding-usd",
             "url" => HTTP_PRIVATE_SECTION . "donazioni.php",
             "handler" => "",
-            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
+            "super_user" => 0, // visibile solo all'utente SUPER USER
             "group_id" => array(GRUPPO_AMMINISTRATORE,GRUPPO_CARD)
         )
     )
@@ -78,7 +78,7 @@ $MENUITEMS[] = array(
     "icon" => "fas fa-cogs",
     "url" => "#",
     "handler" => "",
-    "super_user" => SUPER_USER,
+    "super_user" => 0,
     "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_CARD),
     "children" => array(        
         array(
@@ -88,7 +88,7 @@ $MENUITEMS[] = array(
             "icon" => "fas fa-code",
             "url" => HTTP_PRIVATE_SECTION . "codici_vari.php",
             "handler" => "",
-            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
+            "super_user" => 0, // visibile solo all'utente SUPER USER
             "group_id" => array(GRUPPO_AMMINISTRATORE, GRUPPO_CARD)
         ),array(
             "id" => "PERSONE",
@@ -97,7 +97,7 @@ $MENUITEMS[] = array(
             "icon" => "fas fa-id-card-alt",
             "url" => HTTP_PRIVATE_SECTION . "persone.php",
             "handler" => "",
-            "super_user" => SUPER_USER, // visibile solo all'utente SUPER USER
+            "super_user" => 0, // visibile solo all'utente SUPER USER
             "group_id" => array(GRUPPO_AMMINISTRATORE,ANAG_PERSONE)
         )
     )

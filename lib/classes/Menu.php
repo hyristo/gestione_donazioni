@@ -294,7 +294,7 @@ class Menu {
         $navbar = '<div class="row p-5" id="' . $asideId . '">';
         
         //$navbar .= '<a class="navbar-brand" href="#">'.APP_NAME.' - <span class="badge badge-dark">ApplicationVersion::get()</span></a>';
-        $navbar .= '<h3 class="col-sm-12">Benvenuto '.$LoggedAccount->Anagrafica['COGNOME'].' '.$LoggedAccount->Anagrafica['NOME'].'</h3>';
+        $navbar .= '<h3 class="col-sm-12">Ciao '.$LoggedAccount->Anagrafica['COGNOME'].' '.$LoggedAccount->Anagrafica['NOME'].'</h3>';
         $navbar .= '<h6 class="col-sm-12">Questi sono i servizi attivi:</h6>';        
         if (count($MENUITEMS)) {            
             foreach ($MENUITEMS as $value) {
