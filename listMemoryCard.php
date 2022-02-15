@@ -30,23 +30,29 @@ include 'lib/api.php';
             $listMovmenti = $donazioni->Load();
             $card = new AnagraficaMemoryCard();
             $listCard = $card->Load();
-            //Utils::print_array($listMovmenti);
+            
             $array_movimenti = array();
             $array_anni = array();
             foreach ($listMovmenti as $value) {
                 foreach ($value as $key => $val) {
                     if($key == "ANNO")
-                        $array_anni[$key] = $val;
+                        $array_anni[$val] = $val;
                     //echo $key." => ".$val."<br>";
                 }
-            }
-            //Utils::print_array($array_anni);
-
+            }            
             ?>            
              
             <div class="container-fluid" id="contentMemoryCard">
-                
+                <ul class="nav nav-pills mb-3" id="TabDonazioni" role="tablist">
                 <?foreach ($array_anni as $a => $anno) {?>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link <?=($anno == date('Y') || count($array_anni) == 1 ? 'active' : '')?>" id="<?=$anno?>-tab" data-toggle="tab" href="#anno_<?=$anno?>" role="tab" aria-controls="anno_<?=$anno?>" aria-selected="true">Anno <?=$anno?></a>
+                    </li>
+                <?}?>                   
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                <?foreach ($array_anni as $a => $anno) {?>
+                    <div class="tab-pane fade <?=($anno == date('Y') || count($array_anni) == 1 ? 'show active' : '')?>" id="anno_<?=$anno?>" role="tabpanel" aria-labelledby="pills-<?=$anno?>-tab">
                     <div class="card" >
                         <div class="card-header">
                             <h5 class="card-title">Anno <?=$anno?></h5>
@@ -94,8 +100,10 @@ include 'lib/api.php';
                             
                         </div>
                     </div>
+                    </div>
                     
                 <?}?>
+                </div>
             </div>
         </main>		
         <? include_once ROOT . 'layout/include_js.php'; ?>

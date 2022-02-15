@@ -163,7 +163,7 @@ $pro_donazione = CodiciVari::Load(0, 'PRO_DONAZIONE');
                                             <label for="ANNO"><span class="text-danger">*&nbsp;</span>Anno</label>
                                             <select required=""  class="form-control" id="movANNO" name="ANNO">
                                                 <?
-                                                for ($i = date('Y') ; $i<= date('Y')+2 ; $i++){
+                                                for ($i = date('Y')-1 ; $i<= date('Y')+2 ; $i++){
                                                 ?>
                                                 <option value="<?=$i?>"><?=$i?></option>
                                                 <?}?>
@@ -318,6 +318,7 @@ $pro_donazione = CodiciVari::Load(0, 'PRO_DONAZIONE');
                     'processing': true,
                     'serverSide': true,
                     'serverMethod': 'post',
+                    'order': [[0, 'DESC']],
                     'ajax': {
                         'url': WS_CALL + '?module=<?= WS_MODULE ?>&action=list'
                     },

@@ -95,12 +95,12 @@ function listDonazioni(){
         
         
         if($row['CANCELLATO']==0){
-            $onclickDisable = 'onclick="siparsFramework.takeChargeConfirm(\''.$row['ID'].'\',\'donazioni\', \'delete\', \'#ListCard\' )"';
-            $colorBtnDisable = 'btn-success';
-            $iconBtnDisable = 'fas fa-toggle-on';
+            $onclickDisable = 'onclick="siparsFramework.takeChargeConfirm(\''.$row['ID'].'\',\'donazioni\', \'delete\', \'#ListDonazioni\' )"';
+            $colorBtnDisable = 'btn-danger';
+            $iconBtnDisable = 'far fa-trash-alt';
             
         } else {
-            $onclickDisable = 'onclick="siparsFramework.takeChargeConfirm(\''.$row['ID'].'\',\'donazioni\', \'riattiva\', \'#ListCard\' )"';
+            $onclickDisable = 'onclick="siparsFramework.takeChargeConfirm(\''.$row['ID'].'\',\'donazioni\', \'riattiva\', \'#ListDonazioni\' )"';
             $colorBtnDisable = 'btn-danger';
             $iconBtnDisable = 'fas fa-toggle-off';
         }
@@ -153,7 +153,7 @@ function save(){
 function delete(){
     $id = Utils::getFromReq("id",0);          
     $record = new Donazioni($id);    
-    $return = $record->LogicalDelete();
+    $return = $record->Delete();
     exit(json_encode($return));
 }
 
