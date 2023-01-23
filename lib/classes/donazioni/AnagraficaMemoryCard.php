@@ -72,7 +72,7 @@ class AnagraficaMemoryCard extends DataClass{
 
         $query = $con->prepare($sql);
         if (intval($cancellato) >= 0)
-            $query->bindParam(":CANCELLATO", intval($cancellato));
+            $query->bindParam(":CANCELLATO", ($cancellato));
         if (!empty($codice))
             $query->bindParam(":CODICE", $codice);
         try {

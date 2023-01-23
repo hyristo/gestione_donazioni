@@ -85,7 +85,7 @@ class Donazioni extends DataClass{
 
         $query = $con->prepare($sql);
         if (intval($cancellato) >= 0)
-            $query->bindParam(":CANCELLATO", intval($cancellato));
+            $query->bindParam(":CANCELLATO", ($cancellato));
         if (!empty($codice))
             $query->bindParam(":ID_CARD", $codice);
         if (!empty($anno))
@@ -93,9 +93,9 @@ class Donazioni extends DataClass{
         if (!empty($mese))
             $query->bindParam(":MESE", $mese);
         if (intval($tipo_donazione) > 0)
-            $query->bindParam(":TIPO_DONAZIONE", intval($tipo_donazione));
+            $query->bindParam(":TIPO_DONAZIONE", ($tipo_donazione));
         if (intval($pro_donazione) > 0)
-            $query->bindParam(":PRO_DONAZIONE", intval($pro_donazione));
+            $query->bindParam(":PRO_DONAZIONE", ($pro_donazione));
         try {
             $query->execute();
             $it = $query->fetchAll(PDO::FETCH_ASSOC);

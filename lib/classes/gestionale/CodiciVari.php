@@ -91,13 +91,13 @@ class CodiciVari extends DataClass {
         
         $query = $con->prepare($sql, true);        
         if (intval($id) > 0)
-            $query->bindParam(":id_codice", intval($id));
+            $query->bindParam(":id_codice", $id);
         if (trim($gruppo) != "")
-            $query->bindParam(":gruppo", trim($gruppo));
+            $query->bindParam(":gruppo", $gruppo);
         if (intval($invisibile) >= 0)
-            $query->bindParam(":invisibile", intval($invisibile));
+            $query->bindParam(":invisibile", $invisibile);
         if (intval($cancellato) >= 0)
-            $query->bindParam(":cancellato", intval($cancellato));
+            $query->bindParam(":cancellato", $cancellato);
 
         try {
             $query->execute();
